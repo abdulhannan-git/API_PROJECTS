@@ -1,0 +1,5 @@
+Annotations
+
+1. @RestController
+2. @RequestMapping(method = RequestMethod.GET, path = "/hello-world")
+3. @GetMapping(path = "/my-name")
