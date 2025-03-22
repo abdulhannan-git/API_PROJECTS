@@ -1,10 +1,5 @@
 Restfull API
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
 @RestController
 public class HelloWorldController {
 	@RequestMapping(method = RequestMethod.GET, path = "/hello-world")
@@ -15,5 +10,10 @@ public class HelloWorldController {
 	@GetMapping(path = "/my-name")
 	public String name() {
 		return "Abdul Hannan";
+	}
+
+	@GetMapping(path = "/my-bean/path-variabale/{name}")
+	public MyBean myBeanPathVariable(@PathVariable String name) {
+		return new MyBean(String.format("Hello world, %s", name));
 	}
 }
