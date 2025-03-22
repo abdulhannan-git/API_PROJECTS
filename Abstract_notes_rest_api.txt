@@ -3,3 +3,12 @@ Annotations
 1. @RestController
 2. @RequestMapping(method = RequestMethod.GET, path = "/hello-world")
 3. @GetMapping(path = "/my-name")
+4.    @GetMapping(path = "/my-bean/path-variabale/{name}")
+	    public MyBean myBeanPathVariable(@PathVariable String name) {
+	  	return new MyBean(String.format("Hello world, %s", name));
+	    }
+5. GET: Retrieve details of a resource
+6. POST: Create a new resource
+7. PUT: Update an existing resource
+8. PATCH:  Update part of a resource
+9. DELETE: Delete a resource
