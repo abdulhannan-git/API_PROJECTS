@@ -3,6 +3,7 @@ package com.rest.webservices.restful_web_services.users;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,5 +30,11 @@ public class UserDaoService {
 		user.setId(++usersCount);
 		users.add(user);
 		return user;
+	}
+
+	public void deleteById(int id) {
+		Predicate<? super User> predicate = u -> u.getId().equals(id);
+		users.removeIf(predicate);
+
 	}
 }
