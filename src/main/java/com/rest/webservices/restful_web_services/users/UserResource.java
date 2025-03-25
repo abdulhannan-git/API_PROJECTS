@@ -34,7 +34,7 @@ public class UserResource {
 		return user;
 	}
 	
-	@GetMapping(path = "/users/{id}")
+	@DeleteMapping(path = "/users/{id}")
 	public void deleteUser(@PathVariable int id) {
 		service.deleteById(id);
 		
