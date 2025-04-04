@@ -2,15 +2,25 @@ package com.rest.webservices.restful_web_services.users;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
+@JsonIgnoreProperties({"birth_date","user_id"})
+
 public class User {
+	@JsonProperty("user_id")
 	private Integer id;
 	
+	@JsonProperty("user_name")
 	@Size(min = 2, message = "name must have atleast 2 characters.")
 	private String name;
 	
+	@JsonIgnore
+	@JsonProperty("birth_date")
 	@Past(message = "Date must be less than BOD date..")
 	private LocalDate birthDate;
 
