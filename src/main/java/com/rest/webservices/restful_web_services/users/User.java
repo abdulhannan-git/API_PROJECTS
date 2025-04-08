@@ -1,12 +1,13 @@
 package com.rest.webservices.restful_web_services.users;
 
 import java.time.LocalDate;
-
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
@@ -18,7 +19,10 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Integer id;
-
+	
+	@OneToMany(mappedBy = "user")
+	@JsonIgnore
+	private List<Post> posts;
 	@JsonProperty("user_name")
 	@Size(min = 2, message = "name must have atleast 2 characters.")
 	private String name;
@@ -50,6 +54,14 @@ public class User {
 
 	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 
 	protected User() {
